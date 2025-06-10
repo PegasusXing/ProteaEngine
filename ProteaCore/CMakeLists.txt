@@ -36,7 +36,9 @@ target_compile_definitions(ProteaCore PRIVATE PROTEA_PLATFORM_WINDOWS PROTEA_BUI
 
 # Copy the DLL to the sandbox bin folder after building
 add_custom_command(TARGET ProteaCore POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory
+        "$<TARGET_FILE_DIR:ProteaSandbox>"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        $<TARGET_FILE:ProteaCore>
-        ${CMAKE_BINARY_DIR}/ProteaSandbox/bin/)
-
+        "$<TARGET_FILE:ProteaCore>"
+        "$<TARGET_FILE_DIR:ProteaSandbox>"
+)
