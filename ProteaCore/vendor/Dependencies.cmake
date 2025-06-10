@@ -2,6 +2,8 @@
 # /// Dependencies: //////////////////////////////////////
 # ////////////////////////////////////////////////////////
 # TODO: Move to manual vendor linking for standalone build
+# ////////////////////////////////////////////////////////
+
 include(FetchContent)
 
 FetchContent_Declare(
@@ -15,6 +17,7 @@ FetchContent_Declare(
 set(spdlog_POPULATE 1 CACHE INTERNAL "Mark spdlog as already populated")
 
 FetchContent_GetProperties(spdlog)
+
 if(NOT spdlog_POPULATED)
     FetchContent_MakeAvailable(spdlog)
     # After fetching, delete the .git folder from the source directory to avoid nested repos
