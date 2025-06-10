@@ -13,10 +13,9 @@ set(PROTEA_CORE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
 add_library(ProteaCore SHARED
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Application.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Application.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/EntryPoint.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Core.h
-        ${PROTEA_CORE_SOURCE_DIR}/Protea.h
-        source/Protea/EntryPoint.h
-)
+        ${PROTEA_CORE_SOURCE_DIR}/Protea.h)
 
 target_include_directories(ProteaCore PUBLIC ${PROTEA_CORE_SOURCE_DIR})
 
@@ -26,6 +25,5 @@ target_compile_definitions(ProteaCore PRIVATE PROTEA_PLATFORM_WINDOWS PROTEA_BUI
 add_custom_command(TARGET ProteaCore POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         $<TARGET_FILE:ProteaCore>
-        ${CMAKE_BINARY_DIR}/ProteaSandbox/bin/
-)
+        ${CMAKE_BINARY_DIR}/ProteaSandbox/bin/)
 
