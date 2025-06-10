@@ -10,8 +10,6 @@
 int main(int argc, char **argv) {
 
     Protea::Log::Init();
-    PROTEA_CRIT("ProteaEngine started");
-    PROTEA_CORE_DEBUG("Debug Message");
 
     const auto application = Protea::CreateApplication();
     application->Run();
