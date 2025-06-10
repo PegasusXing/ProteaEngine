@@ -20,7 +20,10 @@ add_library(ProteaCore SHARED
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Application.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/EntryPoint.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Core.h
-        ${PROTEA_CORE_SOURCE_DIR}/Protea.h)
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Log.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Log.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea.h
+)
 
 # Linking:
 target_link_libraries(ProteaCore PUBLIC spdlog::spdlog)

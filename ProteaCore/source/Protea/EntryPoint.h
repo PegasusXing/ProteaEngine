@@ -4,11 +4,13 @@
 #define ENTRYPOINT_H
 
 #ifdef PROTEA_PLATFORM_WINDOWS
-#include "Protea.h"
 
-extern Protea::Application* Protea::CreateApplication();
+// extern Protea::Application* Protea::CreateApplication();
 
 int main(int argc, char **argv) {
+
+    Protea::Log::Init();
+
 
     auto application = Protea::CreateApplication();
     application->Run();
