@@ -26,7 +26,7 @@ add_library(ProteaCore SHARED
 )
 
 # Linking:
-target_link_libraries(ProteaCore PUBLIC spdlog::spdlog)
+target_link_libraries(ProteaCore PUBLIC -shared-libgcc -shared-libstdc++ spdlog::spdlog)
 
 # Include Directories:
 target_include_directories(ProteaCore PUBLIC ${PROTEA_CORE_SOURCE_DIR})
