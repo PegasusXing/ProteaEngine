@@ -11,7 +11,6 @@ int main(int argc, char **argv) {
 
     Protea::Log::Init();
 
-
     auto application = Protea::CreateApplication();
     application->Run();
     delete application;

@@ -12,7 +12,7 @@ set(PROTEA_CORE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
 set(PROTEA_CORE_VENDOR_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendor)
 
 # Fetch Dependencies:
-add_subdirectory(${PROTEA_CORE_VENDOR_DIR}/spdlog)
+include(${PROTEA_CORE_VENDOR_DIR}/Dependencies.cmake)
 
 # Add Library source files
 add_library(ProteaCore SHARED
