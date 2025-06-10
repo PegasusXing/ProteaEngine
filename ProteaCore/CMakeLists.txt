@@ -9,13 +9,21 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/ProteaCore/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/ProteaCore/lib)
 # Project Directories:
 set(PROTEA_CORE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
+set(PROTEA_CORE_VENDOR_DIR ${CMAKE_CURRENT_SOURCE_DIR}/vendor)
 
+# Fetch Dependencies:
+add_subdirectory(${PROTEA_CORE_VENDOR_DIR}/spdlog)
+
+# Add Library source files
 add_library(ProteaCore SHARED
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Application.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Application.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/EntryPoint.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Core.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea.h)
+
+# Linking:
+target_link_libraries(ProteaCore PUBLIC spdlog::spdlog)
 
 target_include_directories(ProteaCore PUBLIC ${PROTEA_CORE_SOURCE_DIR})
 
