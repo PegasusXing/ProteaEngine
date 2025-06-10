@@ -1,2 +1,2 @@
-# Protea-Engine
+# ProteaEngine
 Protea Game Engine
