@@ -25,18 +25,6 @@ add_library(ProteaCore SHARED
         ${PROTEA_CORE_SOURCE_DIR}/Protea.h
 )
 
-# 3. Compile options (like -static-libgcc, warnings, etc.)
-target_compile_options(ProteaCore PRIVATE
-        "-static-libgcc"
-        "-shared-libstdc++"
-)
-
-# 4. Link options
-target_link_options(ProteaCore PRIVATE
-        "-static-libgcc"
-        "-shared-libstdc++"
-)
-
 # Linking:
 target_link_libraries(ProteaCore PUBLIC spdlog::spdlog)
 
