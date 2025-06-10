@@ -28,8 +28,10 @@ add_library(ProteaCore SHARED
 # Linking:
 target_link_libraries(ProteaCore PUBLIC spdlog::spdlog)
 
+# Include Directories:
 target_include_directories(ProteaCore PUBLIC ${PROTEA_CORE_SOURCE_DIR})
 
+# Compile Definitions:
 target_compile_definitions(ProteaCore PRIVATE PROTEA_PLATFORM_WINDOWS PROTEA_BUILD_DLL)
 
 # Copy the DLL to the sandbox bin folder after building
