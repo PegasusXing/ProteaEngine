@@ -6,6 +6,8 @@
 
 include(FetchContent)
 
+set(SPDLOG_HEADER_ONLY ON CACHE BOOL "" FORCE)
+
 FetchContent_Declare(
         spdlog
         GIT_REPOSITORY              https://github.com/gabime/spdlog.git

@@ -41,5 +41,3 @@ add_custom_command(TARGET ProteaCore POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
         $<TARGET_FILE:ProteaCore>
         ${CMAKE_BINARY_DIR}/ProteaSandbox/bin/)
-
-message(STATUS ${CMAKE_BINARY_DIR})
