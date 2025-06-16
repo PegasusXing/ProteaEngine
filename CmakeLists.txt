@@ -1,7 +1,22 @@
 cmake_minimum_required(VERSION 3.31)
 project(ProteaEngine)
 
-set(CMAKE_CXX_STANDARD 23)
+# Default fallback
+set(DEFAULT_CXX_STANDARD 23)
+
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    # Limit GCC to C++17 to avoid known issues with DLLs
+    set(DEFAULT_CXX_STANDARD 17)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    set(DEFAULT_CXX_STANDARD 23)
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    set(DEFAULT_CXX_STANDARD 20) # Or 23 if you’ve tested it works
+endif()
+
+# Apply it globally or per target
+set(CMAKE_CXX_STANDARD ${DEFAULT_CXX_STANDARD})
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Set target platform architecture fallback
 if (NOT CMAKE_GENERATOR_PLATFORM)
