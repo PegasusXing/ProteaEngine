@@ -21,16 +21,20 @@ set(CMAKE_CXX_STANDARD ${DEFAULT_CXX_STANDARD})
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Determine architecture (Win32 vs x64 fallback)
-if (NOT CMAKE_GENERATOR_PLATFORM)
-    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-        set(PROTEA_ARCH "x64")
-    else()
-        set(PROTEA_ARCH "Win32")
+# Check if the generator platform is set and valid
+if (CMAKE_GENERATOR_PLATFORM)
+    if (NOT CMAKE_GENERATOR_PLATFORM STREQUAL "x64")
+        message(FATAL_ERROR "Unsupported platform: ${CMAKE_GENERATOR_PLATFORM}. Only x64 is supported.")
     endif()
-else()
-    set(PROTEA_ARCH ${CMAKE_GENERATOR_PLATFORM})
 endif()
+
+# Check pointer size at compile time (applies to non-MSVC too)
+if (CMAKE_SIZEOF_VOID_P LESS 8)
+    message(FATAL_ERROR "Only 64-bit builds are supported. Please ensure you're targeting x64.")
+endif()
+
+# Hardcode architecture internally
+set(PROTEA_ARCH "x64")
 
 # Output directory configuration per config (for MSVC multi-config)
 foreach(CONFIG_TYPE DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
