@@ -2,16 +2,7 @@ cmake_minimum_required(VERSION 3.31)
 project(ProteaCore)
 
 # Default fallback
-set(DEFAULT_CXX_STANDARD 23)
-
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    # Limit GCC to C++17 to avoid known issues with DLLs
-    set(DEFAULT_CXX_STANDARD 17)
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    set(DEFAULT_CXX_STANDARD 23)
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    set(DEFAULT_CXX_STANDARD 20) # Or 23 if you’ve tested it works
-endif()
+set(DEFAULT_CXX_STANDARD ${DEFAULT_CXX_STANDARD})
 
 # Project Directories:
 set(PROTEA_CORE_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
