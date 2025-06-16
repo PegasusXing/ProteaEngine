@@ -1,24 +1,27 @@
 cmake_minimum_required(VERSION 3.31)
-project(ProteaEngine)
+project(ProteaEngine LANGUAGES CXX)
 
-# Default fallback
-set(DEFAULT_CXX_STANDARD 23)
+# Determine the C++ standard based on compiler
+function(set_default_cxx_standard)
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        set(DEFAULT_CXX_STANDARD 17 PARENT_SCOPE)
+    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+        set(DEFAULT_CXX_STANDARD 23 PARENT_SCOPE)
+    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+        set(DEFAULT_CXX_STANDARD 20 PARENT_SCOPE)
+    else()
+        set(DEFAULT_CXX_STANDARD 23 PARENT_SCOPE)
+    endif()
+endfunction()
 
-if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    # Limit GCC to C++17 to avoid known issues with DLLs
-    set(DEFAULT_CXX_STANDARD 17)
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    set(DEFAULT_CXX_STANDARD 23)
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    set(DEFAULT_CXX_STANDARD 20)
-endif()
+set_default_cxx_standard()
 
-# Apply it globally or per target
+# Apply C++ standard globally
 set(CMAKE_CXX_STANDARD ${DEFAULT_CXX_STANDARD})
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Set target platform architecture fallback
+# Determine architecture (Win32 vs x64 fallback)
 if (NOT CMAKE_GENERATOR_PLATFORM)
     if(CMAKE_SIZEOF_VOID_P EQUAL 8)
         set(PROTEA_ARCH "x64")
@@ -29,10 +32,14 @@ else()
     set(PROTEA_ARCH ${CMAKE_GENERATOR_PLATFORM})
 endif()
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/${CMAKE_BUILD_TYPE}_${PROTEA_ARCH}/bin)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/${CMAKE_BUILD_TYPE}_${PROTEA_ARCH}/lib)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/${CMAKE_BUILD_TYPE}_${PROTEA_ARCH}/lib)
+# Output directory configuration per config (for MSVC multi-config)
+foreach(CONFIG_TYPE DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
+    string(TOUPPER ${CONFIG_TYPE} CONFIG_UPPER)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/build/${CONFIG_TYPE}_${PROTEA_ARCH}/bin)
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/build/${CONFIG_TYPE}_${PROTEA_ARCH}/lib)
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/build/${CONFIG_TYPE}_${PROTEA_ARCH}/lib)
+endforeach()
 
-# Add subdirectories
+# Add project subdirectories
 add_subdirectory(ProteaCore)
 add_subdirectory(ProteaSandbox)
