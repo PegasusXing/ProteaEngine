@@ -36,7 +36,7 @@ endif()
 # Hardcode architecture internally
 set(PROTEA_ARCH "x64")
 
-# Output directory configuration per config (for MSVC multi-config)
+# Output directory configuration per config (Debug/Release/etc.)
 foreach(CONFIG_TYPE DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
     string(TOUPPER ${CONFIG_TYPE} CONFIG_UPPER)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/bin)
