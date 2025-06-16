@@ -3,6 +3,21 @@ project(ProteaEngine)
 
 set(CMAKE_CXX_STANDARD 23)
 
+# Set target platform architecture fallback
+if (NOT CMAKE_GENERATOR_PLATFORM)
+    if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        set(PROTEA_ARCH "x64")
+    else()
+        set(PROTEA_ARCH "Win32")
+    endif()
+else()
+    set(PROTEA_ARCH ${CMAKE_GENERATOR_PLATFORM})
+endif()
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/bin/${CMAKE_BUILD_TYPE}_${PROTEA_ARCH})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib/${CMAKE_BUILD_TYPE}_${PROTEA_ARCH})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build/lib/${CMAKE_BUILD_TYPE}_${PROTEA_ARCH})
+
 # Add subdirectories
 add_subdirectory(ProteaCore)
 add_subdirectory(ProteaSandbox)

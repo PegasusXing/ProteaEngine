@@ -4,7 +4,7 @@ project(ProteaSandbox)
 set(CMAKE_CXX_STANDARD 23)
 
 # Set output directories for all configurations:
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/ProteaSandbox/bin)
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/ProteaSandbox/bin)
 
 # Project Directories:
 set(PROTEA_SANDBOX_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/source)
