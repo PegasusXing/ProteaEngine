@@ -15,11 +15,17 @@ set(PROTEA_CORE_SOURCES
 )
 
 set(PROTEA_CORE_HEADERS
+        ## Core #############################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Application.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/EntryPoint.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Core.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Log.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea.h
+        ## Events ###########################################################################
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/Event.h
+        source/Protea/Events/KeyEvent.h
+        source/Protea/Events/MouseEvent.h
+        source/Protea/Events/ApplicationEvent.h
 )
 
 # Shared library target

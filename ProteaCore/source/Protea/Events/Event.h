@@ -1,0 +1,16 @@
+#ifndef EVENT_H
+#define EVENT_H
+
+#include "Protea/Core.h"
+
+#include <string>
+#include <functional>
+
+namespace Protea {
+    ////////////////////////////////////////////////////////////////////////////////////
+    /// Events in ProteaEngine are currently blocking - move to "buffer" (event bus) ///
+    ////////////////////////////////////////////////////////////////////////////////////
+
+}
+
+#endif //EVENT_H
