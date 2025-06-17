@@ -1,4 +1,3 @@
-
 #include "Log.h"
 
 #include "spdlog/sinks/stdout_color_sinks-inl.h"
@@ -9,8 +8,8 @@ namespace Protea {
 
     void Log::Init() {
         //spdlog::set_pattern("[%H:%M:%S %z] [%n] [%^---%L---%$] [thread %t] %v");
-        spdlog::set_pattern("%^[%T] [%=17n] : %v%$");
-        s_CoreLogger   = spdlog::stdout_color_mt("PROTEA_CORE_LOG");
+        spdlog::set_pattern("%^[%T] [%=17n] %v%$");
+        s_CoreLogger = spdlog::stdout_color_mt("PROTEA_CORE_LOG");
         s_CoreLogger->set_level(spdlog::level::trace);
 
         s_ClientLogger = spdlog::stdout_color_mt("APPLICATION_LOG");

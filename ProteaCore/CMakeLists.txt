@@ -23,9 +23,10 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea.h
         ## Events ###########################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/Event.h
-        source/Protea/Events/KeyEvent.h
-        source/Protea/Events/MouseEvent.h
-        source/Protea/Events/ApplicationEvent.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/KeyEvent.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/MouseEvent.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/ApplicationEvent.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/EventFormatter.h
 )
 
 # Shared library target

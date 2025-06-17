@@ -2,19 +2,20 @@
 #define APPLICATION_H
 
 #include "Core.h"
+#include "Events/Event.h"
 
 namespace Protea {
     class PROTEA_API Application {
-        public:
+    public:
         Application();
+
         virtual ~Application();
 
         void Run();
     };
+
     // To be defined in CLIENT
     Application *CreateApplication();
 }
-
-void hello();
 
 #endif //APPLICATION_H
