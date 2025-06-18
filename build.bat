@@ -2,13 +2,13 @@
 setlocal enabledelayedexpansion
 
 :: Colors ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-set COLOR_RESET     =[0m
-set COLOR_GREEN     =[32m
-set COLOR_RED       =[31m
-set COLOR_CYAN      =[36m
-set COLOR_YELLOW    =[33m
-set COLOR_WHITE     =[37m
-set COLOR_BLUE      =[34m
+set COLOR_RESET=[0m
+set COLOR_GREEN=[32m
+set COLOR_RED=[31m
+set COLOR_CYAN=[36m
+set COLOR_YELLOW=[33m
+set COLOR_WHITE=[37m
+set COLOR_BLUE=[34m
 
 :: ANSI ESCAPE CODES :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 for /f "tokens=2 delims=: " %%i in ('ver') do set ver=%%i
