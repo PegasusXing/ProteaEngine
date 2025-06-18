@@ -28,7 +28,7 @@ namespace Protea {
 
         virtual void Shutdown();
 
-        GLFWwindow *m_Window;
+        GLFWwindow *m_Window{};
 
         struct WindowData {
             std::string Title;
