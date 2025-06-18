@@ -1,6 +1,5 @@
 #include "ProteaPCH.h"
 #include "Application.h"
-//#include "Events/EventFormatter.h"
 
 #include <GLFW/glfw3.h>
 
