@@ -1,15 +1,32 @@
 @echo off
 setlocal enabledelayedexpansion
 
+:: Colors ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+set COLOR_RESET     =[0m
+set COLOR_GREEN     =[32m
+set COLOR_RED       =[31m
+set COLOR_CYAN      =[36m
+set COLOR_YELLOW    =[33m
+set COLOR_WHITE     =[37m
+set COLOR_BLUE      =[34m
+
+:: ANSI ESCAPE CODES :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+for /f "tokens=2 delims=: " %%i in ('ver') do set ver=%%i
+if %ver% GEQ 10 (
+    reg query HKCU\Console | find "VirtualTerminalLevel" >nul 2>&1 || (
+        reg add HKCU\Console /v VirtualTerminalLevel /t REG_DWORD /d 1 /f >nul
+    )
+)
+
 :MAIN_MENU
 cls
 echo -----------------------------------------------------
-echo --- ProteaEngine Build System - Compiler Selector ---
+echo ------------  ProteaEngine Build System  ------------
 echo -----------------------------------------------------
 echo.
 echo 1. Clang   (with Ninja)
-echo NOTE: DOESN'T GCC WORK DUE TO CXX STANDARD 17 due to
-echo (EventFormatter.h) conflicts... Will fix.
+echo %COLOR_RED%NOTE: DOESN'T GCC WORK DUE TO CXX STANDARD 17 due to
+echo %COLOR_RED%(EventFormatter.h) conflicts... Will fix.%COLOR_RESET%
 echo 2. GCC     (with Ninja)
 echo 3. MSVC    (Visual Studio 2022)
 echo.
