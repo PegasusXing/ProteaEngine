@@ -20,17 +20,19 @@ if %ver% GEQ 10 (
 
 :MAIN_MENU
 cls
-echo -----------------------------------------------------
-echo ------------  ProteaEngine Build System  ------------
-echo -----------------------------------------------------
+echo -----------------------------------------------------------------------------
+echo -----------------------------------------------------------------------------
+echo ------------------------  %COLOR_GREEN%ProteaEngine Build System%COLOR_RESET%  ------------------------
+echo -----------------------------------------------------------------------------
+echo ------- %COLOR_YELLOW%NOTE: GCC DOESN'T WORK DUE TO CXX STANDARD BEING ABOVE CXX 17%COLOR_RESET% -------
+echo -----------------------------------------------------------------------------
+echo -----------------------------------------------------------------------------
 echo.
-echo 1. Clang   (with Ninja)
-echo %COLOR_RED%NOTE: DOESN'T GCC WORK DUE TO CXX STANDARD 17 due to
-echo %COLOR_RED%(EventFormatter.h) conflicts... Will fix.%COLOR_RESET%
-echo 2. GCC     (with Ninja)
-echo 3. MSVC    (Visual Studio 2022)
+echo 1. %COLOR_GREEN%Clang%COLOR_RESET%   (with Ninja)
+echo 2. %COLOR_GREEN%GCC%COLOR_RESET%     (with Ninja)
+echo 3. %COLOR_GREEN%MSVC%COLOR_RESET%    (Visual Studio 2022)
 echo.
-echo 4. Exit
+echo 4. %COLOR_RED%Exit%COLOR_RESET%
 echo.
 
 set /p choice="Enter your choice (1-4): "
