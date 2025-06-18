@@ -1,9 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
 
-rem Store the current script directory and switch to root directory
-pushd "%~dp0\.."
-
 :MAIN_MENU
 cls
 echo -----------------------------------------------------
@@ -24,7 +21,7 @@ set /p choice="Enter your choice (1-4): "
 if "%choice%"=="1" goto CLANG_BUILD
 if "%choice%"=="2" goto GCC_BUILD
 if "%choice%"=="3" goto MSVC_BUILD
-if "%choice%"=="4" goto END
+if "%choice%"=="4" exit /b
 
 echo Invalid choice, please try again.
 pause
@@ -62,21 +59,17 @@ cmake -G %GENERATOR% %COMPILER_FLAGS% -DCMAKE_BUILD_TYPE=Debug ..
 if %errorlevel% neq 0 (
     echo CMake configuration failed!
     pause
-    goto MAIN_MENU
+    exit /b
 )
 
 cmake --build .
 if %errorlevel% neq 0 (
     echo Build failed!
     pause
-    goto MAIN_MENU
+    exit /b
 )
 
 echo Build completed successfully in %BUILD_DIR% directory.
 cd ..
 pause
 goto MAIN_MENU
-
-:END
-popd
-exit /b
