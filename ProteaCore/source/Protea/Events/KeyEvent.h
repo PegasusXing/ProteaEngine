@@ -3,8 +3,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Protea {
     class PROTEA_API KeyEvent : public Event {
     public:

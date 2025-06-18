@@ -1,10 +1,8 @@
 #ifndef EVENT_H
 #define EVENT_H
 
+#include "ProteaPCH.h"
 #include "Protea/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Protea {
     ////////////////////////////////////////////////////////////////////////////////////

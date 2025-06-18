@@ -3,8 +3,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Protea {
     class PROTEA_API MouseMovedEvent : public Event {
     public:

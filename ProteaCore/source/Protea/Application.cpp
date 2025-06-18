@@ -1,3 +1,4 @@
+#include "ProteaPCH.h"
 #include "Application.h"
 #include "Protea/Log.h"
 #include "Protea/Events/ApplicationEvent.h"

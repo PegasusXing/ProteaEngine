@@ -12,9 +12,12 @@ include(${PROTEA_CORE_VENDOR_DIR}/Dependencies.cmake)
 set(PROTEA_CORE_SOURCES
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Application.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Log.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/ProteaPCH.cpp
 )
 
 set(PROTEA_CORE_HEADERS
+        ## Pre-Compiled Headers #############################################################
+        ${PROTEA_CORE_SOURCE_DIR}/ProteaPCH.h
         ## Core #############################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Application.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/EntryPoint.h
@@ -44,3 +47,6 @@ target_compile_definitions(ProteaCore
         PROTEA_PLATFORM_WINDOWS
         PROTEA_BUILD_DLL
 )
+
+# Precompiled headers
+target_precompile_headers(ProteaCore PRIVATE ${PROTEA_CORE_SOURCE_DIR}/ProteaPCH.h)

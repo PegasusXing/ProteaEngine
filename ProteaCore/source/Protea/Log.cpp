@@ -1,3 +1,4 @@
+#include "ProteaPCH.h"
 #include "Log.h"
 
 #include "spdlog/sinks/stdout_color_sinks-inl.h"
