@@ -6,6 +6,7 @@
 #define PROTEA_H
 
 #include "Protea/Application.h"
+#include "Protea/Layer.h"
 #include "Protea/Log.h"
 
 ////////////////////////////////////////////////////////
