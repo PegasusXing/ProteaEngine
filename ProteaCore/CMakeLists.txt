@@ -48,13 +48,14 @@ add_library(ProteaCore SHARED ${PROTEA_CORE_SOURCES} ${PROTEA_CORE_HEADERS})
 target_include_directories(ProteaCore PUBLIC ${PROTEA_CORE_SOURCE_DIR})
 
 # Libraries
-target_link_libraries(ProteaCore PUBLIC opengl32 glfw spdlog::spdlog)
+target_link_libraries(ProteaCore PUBLIC opengl32 glad glfw spdlog::spdlog)
 
 # Preprocessor definitions
 target_compile_definitions(ProteaCore
         PRIVATE
         PROTEA_PLATFORM_WINDOWS
         PROTEA_BUILD_DLL
+        GLFW_INCLUDE_NONE
 )
 
 # Precompiled headers
