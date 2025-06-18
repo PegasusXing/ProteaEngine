@@ -1,27 +1,21 @@
 #include "ProteaPCH.h"
 #include "Application.h"
-#include "Protea/Log.h"
-#include "Protea/Events/ApplicationEvent.h"
-#include "Protea/Events/EventFormatter.h"
+
+#include <GLFW/glfw3.h>
 
 namespace Protea {
     Application::Application() {
+        m_Window = std::unique_ptr<Window>(Window::Create());
     }
 
     Application::~Application() {
     }
 
     void Application::Run() {
-        WindowResizeEvent event(1280, 720);
-
-        if (event.IsInCategory(EventCategoryApplication)) {
-            PROTEA_TRACE("{}", event);
-        }
-        if (event.IsInCategory(EventCategoryInput)) {
-            PROTEA_TRACE("{}", event);
-        }
-
-        while (true) {
+        while (m_Running) {
+            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT);
+            m_Window->OnUpdate();
         }
     }
 }
