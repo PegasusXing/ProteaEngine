@@ -21,7 +21,7 @@ namespace Protea {
 
         dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-
+        // Log any events
         PROTEA_CORE_TRACE("{0}", e);
     }
 
