@@ -18,6 +18,7 @@ class SandboxApp : public Protea::Application {
     public:
     SandboxApp() {
         PushLayer(new ExampleLayer());
+        PushOverlay(new Protea::ImGuiLayer());
     }
     ~SandboxApp() override {
 

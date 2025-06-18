@@ -16,6 +16,8 @@ set(PROTEA_CORE_SOURCES
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Layer.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/LayerStack.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.cpp
+        source/Protea/ImGui/ImGuiLayer.cpp
+        source/Protea/ImGui/ImGuiLayer.h
 )
 
 set(PROTEA_CORE_HEADERS
@@ -38,7 +40,8 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/EventFormatter.h
         ## Windows Platform #################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.h
-
+        source/Protea/ImGui/ImGuiLayer.cpp
+        source/Protea/ImGui/ImGuiLayer.h
 )
 
 # Shared library target
@@ -48,7 +51,7 @@ add_library(ProteaCore SHARED ${PROTEA_CORE_SOURCES} ${PROTEA_CORE_HEADERS})
 target_include_directories(ProteaCore PUBLIC ${PROTEA_CORE_SOURCE_DIR})
 
 # Libraries
-target_link_libraries(ProteaCore PUBLIC opengl32 glad glfw spdlog::spdlog)
+target_link_libraries(ProteaCore PUBLIC opengl32 glad glfw imgui spdlog::spdlog)
 
 # Preprocessor definitions
 target_compile_definitions(ProteaCore
