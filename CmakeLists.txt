@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.31)
 project(ProteaEngine LANGUAGES CXX)
 
 # Determine the C++ standard based on compiler
-### FIXME: GNU Compiler wont compile unless CXX_STANDARD is 17 or lower -  Conflict with EventFormatter.h
+# FIXME: GNU Compiler wont compile unless CXX_STANDARD is 17 or lower -  Conflict with EventFormatter.h
 function(set_default_cxx_standard)
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         set(DEFAULT_CXX_STANDARD 17 PARENT_SCOPE)
