@@ -44,7 +44,7 @@ set(PROTEA_ARCH "x64")
 
 # Output directories per config
 foreach(CONFIG_TYPE Debug Release Dist)
-    string(TOUPPER ${CONFIG_TYPE} CONFIG_UPPER) ########################## ${CONFIG_UPPER} for uppercase build dirs
+    string(TOUPPER ${CONFIG_TYPE} CONFIG_UPPER) ########################## ${CONFIG_UPPER} for uppercase build dir
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/bin)
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/lib)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/lib)
