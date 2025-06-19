@@ -6,6 +6,7 @@
 #include "Protea/LayerStack.h"
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
+#include "Protea/ImGui/ImGuiLayer.h"
 
 namespace Protea {
     class PROTEA_API Application {
@@ -28,6 +29,7 @@ namespace Protea {
     private:
         bool OnWindowClose(WindowCloseEvent& e);
         std::unique_ptr<Window> m_Window;
+        ImGuiLayer* m_ImGuiLayer;
         bool m_Running = true;
         LayerStack m_LayerStack;
 

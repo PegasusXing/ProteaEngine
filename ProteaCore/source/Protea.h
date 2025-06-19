@@ -9,6 +9,10 @@
 #include "Protea/Layer.h"
 #include "Protea/Log.h"
 
+#include "Protea/Input.h"
+#include "Protea/KeyCodes.h"
+#include "Protea/MouseButtonCodes.h"
+
 #include "Protea/ImGui/ImGuiLayer.h"
 
 ////////////////////////////////////////////////////////

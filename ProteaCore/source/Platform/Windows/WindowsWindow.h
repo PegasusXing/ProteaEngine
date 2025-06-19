@@ -16,12 +16,13 @@ namespace Protea {
 
         inline unsigned int GetWidth() const override { return m_Data.Width; }
         inline unsigned int GetHeight() const override { return m_Data.Height; }
-        virtual void* GetNativeWindow() const override { return m_Window; }
         inline void SetEventCallback(const EventCallbackFn &callback) override { m_Data.EventCallback = callback; }
 
         void SetVSync(bool enabled) override;
 
         bool IsVSync() const override;
+
+        virtual void* GetNativeWindow() const override { return m_Window; }
 
     private:
         virtual void Init(const WindowProps &props);
@@ -40,6 +41,8 @@ namespace Protea {
         };
 
         WindowData m_Data;
+
+        void SetWindowIconFromFile(GLFWwindow* window, const std::vector<std::string>& filepaths);
     };
 }
 

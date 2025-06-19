@@ -7,6 +7,8 @@
 ## CMake Build ###########################################
 ##########################################################
 /cmake-build-debug/
+/cmake-build-release/
+/cmake-build-dist/
 CMakeFiles/
 CMakeCache.txt
 Makefile

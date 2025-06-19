@@ -14,6 +14,9 @@ set(PROTEA_CORE_SOURCES
         ${PROTEA_CORE_SOURCE_DIR}/Protea/LayerStack.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsInput.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsInput.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiBuild.cpp
 )
 
 set(PROTEA_CORE_HEADERS
@@ -33,13 +36,17 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/EventFormatter.h
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Input.h
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsInput.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/KeyCodes.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/MouseButtonCodes.h
 )
 
 add_library(ProteaCore SHARED ${PROTEA_CORE_SOURCES} ${PROTEA_CORE_HEADERS})
 
 target_include_directories(ProteaCore PUBLIC ${PROTEA_CORE_SOURCE_DIR})
 
-target_link_libraries(ProteaCore PUBLIC opengl32 glad glfw imgui spdlog::spdlog)
+target_link_libraries(ProteaCore PUBLIC opengl32 glad glfw imgui glm stb_img spdlog::spdlog)
 
 target_compile_definitions(ProteaCore PRIVATE
         PROTEA_PLATFORM_WINDOWS

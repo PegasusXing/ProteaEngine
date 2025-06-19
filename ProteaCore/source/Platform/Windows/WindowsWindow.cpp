@@ -35,10 +35,10 @@ namespace Protea {
         PROTEA_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
 
-        if (s_GLFWInitialized) {
+        if (!s_GLFWInitialized) {
             // TODO: glfwTerminate on system shutdown
             int success = glfwInit();
-            PROTEA_CORE_ASSERT(success, "Could not intialize GLFW!");
+            PROTEA_CORE_ASSERT(success, "Could not initialize GLFW!");
 
             glfwSetErrorCallback(GLFWErrorCallback);
             s_GLFWInitialized = true;
@@ -47,8 +47,15 @@ namespace Protea {
         m_Window = glfwCreateWindow((int) props.Width, (int) props.Height, m_Data.Title.c_str(), nullptr, nullptr);
         glfwMakeContextCurrent(m_Window);
 
-        GLFWimage images[2];
-
+        SetWindowIconFromFile(m_Window, {
+            "../../../ProteaCore/resources/icons/protea_icon_16.png",
+            "../../../ProteaCore/resources/icons/protea_icon_24.png",
+            "../../../ProteaCore/resources/icons/protea_icon_32.png",
+            "../../../ProteaCore/resources/icons/protea_icon_48.png",
+            "../../../ProteaCore/resources/icons/protea_icon_64.png",
+            "../../../ProteaCore/resources/icons/protea_icon_128.png",
+            "../../../ProteaCore/resources/icons/protea_icon_256.png"
+        });
 
         int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
         PROTEA_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -56,7 +63,7 @@ namespace Protea {
         SetVSync(true);
 
         ///////////////////////////////
-        /// GLFW Callbacks ////////////
+        /// GLFW Callbacks: ///////////
         ///////////////////////////////
 
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow *window, int width, int height) {
@@ -138,6 +145,39 @@ namespace Protea {
 
     void WindowsWindow::Shutdown() {
         glfwDestroyWindow(m_Window);
+    }
+
+    void WindowsWindow::SetWindowIconFromFile(GLFWwindow *window, const std::vector<std::string>& filepaths) {
+        std::vector<GLFWimage> icons;
+        std::vector<unsigned char*> allocatedImages; // Keep track to free later
+
+        for (const auto& filepath : filepaths) {
+            int width, height, channels;
+            unsigned char* pixels = stbi_load(filepath.c_str(), &width, &height, &channels, 4);
+
+            if (pixels) {
+                GLFWimage icon;
+                icon.width = width;
+                icon.height = height;
+                icon.pixels = pixels;
+                icons.push_back(icon);
+                allocatedImages.push_back(pixels);
+            } else {
+                const char* reason = stbi_failure_reason();
+                PROTEA_CORE_ERROR("Failed to load icon '{0}': {1}", filepath, reason ? reason : "Unknown error");
+            }
+        }
+
+        if (!icons.empty()) {
+            glfwSetWindowIcon(window, static_cast<int>(icons.size()), icons.data());
+        } else {
+            PROTEA_CORE_WARN("No valid icons were loaded. Window will use the default icon.");
+        }
+
+        // Free memory
+        for (auto pixels : allocatedImages) {
+            stbi_image_free(pixels);
+        }
     }
 
 

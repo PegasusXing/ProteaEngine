@@ -10,9 +10,9 @@ find_package(OpenGL REQUIRED)
 # SPDLOG
 FetchContent_Declare(
         spdlog
-        GIT_REPOSITORY https://github.com/gabime/spdlog.git
-        GIT_TAG v1.15.3
-        GIT_SHALLOW TRUE
+        GIT_REPOSITORY      https://github.com/gabime/spdlog.git
+        GIT_TAG             v1.15.3
+        GIT_SHALLOW         TRUE
 )
 
 set(spdlog_POPULATE 1 CACHE INTERNAL "Mark spdlog as already populated")
@@ -30,9 +30,9 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 FetchContent_Declare(
         glfw
-        GIT_REPOSITORY https://github.com/glfw/glfw.git
-        GIT_TAG 3.4
-        GIT_SHALLOW TRUE
+        GIT_REPOSITORY      https://github.com/glfw/glfw.git
+        GIT_TAG             3.4
+        GIT_SHALLOW         TRUE
 )
 
 set(glfw_POPULATE 1 CACHE INTERNAL "Mark glfw as already populated")
@@ -47,9 +47,9 @@ endif ()
 # GLAD
 FetchContent_Declare(
         glad
-        GIT_REPOSITORY https://github.com/PegasusXing/glad.git
-        GIT_TAG 0.1.36 # main branch
-        GIT_SHALLOW TRUE
+        GIT_REPOSITORY      https://github.com/PegasusXing/glad.git
+        GIT_TAG             0.1.36 # main branch
+        GIT_SHALLOW         TRUE
 )
 
 set(glad_POPULATE 1 CACHE INTERNAL "Mark glad as already populated")
@@ -61,14 +61,46 @@ if (NOT glad_POPULATED)
     file(REMOVE_RECURSE "${glad_SOURCE_DIR}/.git")
 endif ()
 
+# STB_IMAGE
+FetchContent_Declare(
+        stb_image
+        GIT_REPOSITORY      https://github.com/PegasusXing/stb_img.git
+        GIT_TAG             main
+        GIT_SHALLOW         TRUE
+)
 
+set(stb_image_POPULATE 1 CACHE INTERNAL "Mark stb_image as already populated")
+
+FetchContent_GetProperties(stb_image)
+
+if (NOT stb_image_POPULATED)
+    FetchContent_MakeAvailable(stb_image)
+    file(REMOVE_RECURSE "${stb_image_SOURCE_DIR}/.git")
+endif ()
+
+# GLM
+FetchContent_Declare(
+        glm
+        GIT_REPOSITORY      https://github.com/PegasusXing/glm.git
+        GIT_TAG             master
+        GIT_SHALLOW         TRUE
+)
+
+set(glm_POPULATE 1 CACHE INTERNAL "Mark glm as already populated")
+
+FetchContent_GetProperties(glm)
+
+if (NOT glm_POPULATED)
+    FetchContent_MakeAvailable(glm)
+    file(REMOVE_RECURSE "${glm_SOURCE_DIR}/.git")
+endif ()
 
 # ImGUI
 FetchContent_Declare(
         imgui
-        GIT_REPOSITORY https://github.com/ocornut/imgui.git
-        GIT_TAG docking # docking branch v1.91.9b @ latest
-        GIT_SHALLOW TRUE
+        GIT_REPOSITORY      https://github.com/ocornut/imgui.git
+        GIT_TAG             docking # docking branch v1.91.9b @ latest
+        GIT_SHALLOW         TRUE
 )
 
 set(imgui_POPULATE 1 CACHE INTERNAL "Mark imgui as already populated")

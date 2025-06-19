@@ -16,22 +16,19 @@ namespace Protea {
 
         ~ImGuiLayer();
 
-        void OnAttach();
+        virtual void OnAttach() override;
+        virtual void OnDetach() override;
+        virtual void OnImGuiRender() override;
 
-        void OnDetach();
+        void Begin();
+        void End();
 
-        void OnUpdate();
-
-        void OnEvent(Event &event);
-
-        void SetEventBlocking(bool enabled) { m_BlockEvents = enabled; }
-        bool IsEventBlockingEnabled() const { return m_BlockEvents; }
+        //void SetEventBlocking(bool enabled) { m_BlockEvents = enabled; }
+        //bool IsEventBlockingEnabled() const { return m_BlockEvents; }
 
     private:
-        bool OnWindowResizeEvent(WindowResizeEvent& e);
 
-
-        bool m_BlockEvents = true;
+        //bool m_BlockEvents = true;
         float m_Time = 0.0f;
     };
 }
