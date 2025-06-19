@@ -16,8 +16,8 @@ set(PROTEA_CORE_SOURCES
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Layer.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/LayerStack.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.cpp
-        source/Protea/ImGui/ImGuiLayer.cpp
-        source/Protea/ImGui/ImGuiLayer.h
+        ## ImGui ############################################################################
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.cpp
 )
 
 set(PROTEA_CORE_HEADERS
@@ -40,8 +40,8 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/EventFormatter.h
         ## Windows Platform #################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.h
-        source/Protea/ImGui/ImGuiLayer.cpp
-        source/Protea/ImGui/ImGuiLayer.h
+        ## ImGui ############################################################################
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.h
 )
 
 # Shared library target

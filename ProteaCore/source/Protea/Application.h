@@ -2,12 +2,10 @@
 #define APPLICATION_H
 
 #include "Core.h"
-#include "imgui_impl_glfw.h"
 #include "Window.h"
 #include "Protea/LayerStack.h"
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
-#include "GLFW/glfw3.h"
 
 namespace Protea {
     class PROTEA_API Application {

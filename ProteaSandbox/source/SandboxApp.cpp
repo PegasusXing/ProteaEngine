@@ -6,7 +6,7 @@ class ExampleLayer : public Protea::Layer {
     ExampleLayer() : Layer("ExampleLayer") {}
 
     void OnUpdate() override {
-        PROTEA_INFO("Example Layer::OnUpdate");
+        // PROTEA_INFO("Example Layer::OnUpdate");
     }
 
     void OnEvent(Protea::Event& event) override {

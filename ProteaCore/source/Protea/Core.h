@@ -23,4 +23,6 @@
 // Define BIT X as just 1 shifted by x places
 #define BIT(x) (1 << x)
 
+#define PROTEA_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
 #endif //CORE_H

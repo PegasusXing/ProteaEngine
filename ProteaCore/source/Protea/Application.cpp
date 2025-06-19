@@ -35,7 +35,6 @@ namespace Protea {
         dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
         for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
             (*--it)->OnEvent(e);
-
             if (e.Handled) {
                 break;
             }
@@ -54,6 +53,7 @@ namespace Protea {
     }
 
     bool Application::OnWindowClose(WindowCloseEvent &e) {
+        PROTEA_CORE_TRACE("{0}", e);
         m_Running = false;
         return true;
     }
