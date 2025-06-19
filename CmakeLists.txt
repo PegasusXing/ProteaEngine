@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.31)
 project(ProteaEngine LANGUAGES CXX)
 
-# Set configuration types (only applies to multi-config generators)
+# Set configuration types (only applies to multi-config generators like MSVC/Xcode)
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Dist" CACHE STRING "" FORCE)
 
-# Set default build type for single-config generators
+# Set default build type for single-config generators (e.g. Ninja, Unix Makefiles)
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build." FORCE)
 endif()
@@ -42,30 +42,43 @@ endif()
 # Architecture definition
 set(PROTEA_ARCH "x64")
 
-# Output directories per config
+# Output directories per configuration
 foreach(CONFIG_TYPE Debug Release Dist)
-    string(TOUPPER ${CONFIG_TYPE} CONFIG_UPPER) ########################## ${CONFIG_UPPER} for uppercase build dir
+    string(TOUPPER ${CONFIG_TYPE} CONFIG_UPPER)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/bin)
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/lib)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/lib)
 endforeach()
 
-# Custom flags per compiler and config
+# Function to define PROTEA_DEBUG_BUILD / PROTEA_RELEASE_BUILD / PROTEA_DIST_BUILD macros
+function(set_build_config_definitions target)
+    target_compile_definitions(${target} PRIVATE
+            $<$<CONFIG:Debug>:PROTEA_DEBUG_BUILD>
+            $<$<CONFIG:Release>:PROTEA_RELEASE_BUILD>
+            $<$<CONFIG:Dist>:PROTEA_DIST_BUILD>
+    )
+endfunction()
+
+# Custom flags per compiler and config + attach PROTEA_*_BUILD macros
 function(configure_compiler_flags target)
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
         target_compile_options(${target} PRIVATE
-                $<$<CONFIG:Debug>:-g -O0 -DDEBUG>
-                $<$<CONFIG:Release>:-O2 -DNDEBUG>
-                $<$<CONFIG:Dist>:-O3 -DNDEBUG -DPROTEA_DIST>
+                $<$<CONFIG:Debug>:-g -O0>
+                $<$<CONFIG:Release>:-O2>
+                $<$<CONFIG:Dist>:-O3>
         )
     elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
         target_compile_options(${target} PRIVATE
-                $<$<CONFIG:Debug>:/Zi /Od /DDEBUG>
-                $<$<CONFIG:Release>:/O2 /DNDEBUG>
-                $<$<CONFIG:Dist>:/O2 /DNDEBUG /DPROTEA_DIST>
+                $<$<CONFIG:Debug>:/Zi /Od>
+                $<$<CONFIG:Release>:/O2>
+                $<$<CONFIG:Dist>:/O2>
         )
     endif()
+
+    # Attach PROTEA_*_BUILD macros
+    set_build_config_definitions(${target})
 endfunction()
+
 
 # Add subprojects
 add_subdirectory(ProteaCore)

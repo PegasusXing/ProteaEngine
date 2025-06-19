@@ -11,7 +11,7 @@
     #error Protea Engine only supports Windows...
 #endif
 
-#ifdef PROTEA_DEBUG
+#ifdef PROTEA_DEBUG_BUILD
 #define PROTEA_ENABLE_ASSERTS
 #endif
 

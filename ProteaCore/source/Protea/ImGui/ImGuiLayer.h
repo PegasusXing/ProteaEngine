@@ -24,18 +24,14 @@ namespace Protea {
 
         void OnEvent(Event &event);
 
-        ImGuiKey ConvertGLFWKeyToImGuiKey(int glfwKey);
+        void SetEventBlocking(bool enabled) { m_BlockEvents = enabled; }
+        bool IsEventBlockingEnabled() const { return m_BlockEvents; }
 
     private:
-        bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);
-        bool OnMouseButtonReleasedEvent(MouseButtonReleasedEvent& e);
-        bool OnMouseMovedEvent(MouseMovedEvent& e);
-        bool OnMouseScrolledEvent(MouseScrolledEvent& e);
-        bool OnKeyPressedEvent(KeyPressedEvent& e);
-        bool OnKeyReleasedEvent(KeyReleasedEvent& e);
-        bool OnKeyTypedEvent(KeyTypedEvent& e);
         bool OnWindowResizeEvent(WindowResizeEvent& e);
 
+
+        bool m_BlockEvents = true;
         float m_Time = 0.0f;
     };
 }

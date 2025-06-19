@@ -7,7 +7,10 @@ add_executable(ProteaSandbox
         ${PROTEA_SANDBOX_SOURCE_DIR}/SandboxApp.cpp
 )
 
-target_include_directories(ProteaSandbox PRIVATE ${PROTEA_SANDBOX_SOURCE_DIR})
+target_include_directories(ProteaSandbox PRIVATE
+        ${PROTEA_SANDBOX_SOURCE_DIR}
+        $<TARGET_PROPERTY:ProteaCore,INTERFACE_INCLUDE_DIRECTORIES>)
+
 target_link_libraries(ProteaSandbox PRIVATE ProteaCore)
 
 target_compile_definitions(ProteaSandbox PRIVATE PROTEA_PLATFORM_WINDOWS)
