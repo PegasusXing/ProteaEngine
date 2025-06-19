@@ -79,6 +79,8 @@ function(configure_compiler_flags target)
     set_build_config_definitions(${target})
 endfunction()
 
+# message(STATUS "Build configuration macro: $<$<CONFIG:Debug>:PROTEA_DEBUG_BUILD>$<$<CONFIG:Release>:PROTEA_RELEASE_BUILD>$<$<CONFIG:Dist>:PROTEA_DIST_BUILD>")
+message(STATUS "Build type is ${CMAKE_BUILD_TYPE}")
 
 # Add subprojects
 add_subdirectory(ProteaCore)

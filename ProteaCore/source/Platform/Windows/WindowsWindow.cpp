@@ -35,7 +35,7 @@ namespace Protea {
         PROTEA_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
 
 
-        if (!s_GLFWInitialized) {
+        if (s_GLFWInitialized) {
             // TODO: glfwTerminate on system shutdown
             int success = glfwInit();
             PROTEA_CORE_ASSERT(success, "Could not intialize GLFW!");
