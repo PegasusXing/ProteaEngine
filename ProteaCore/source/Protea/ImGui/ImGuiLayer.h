@@ -7,6 +7,8 @@
 #include "Protea/Events/KeyEvent.h"
 #include "Protea/Events/MouseEvent.h"
 
+#include "imgui.h"
+
 namespace Protea {
     class PROTEA_API ImGuiLayer : public Layer {
     public:
@@ -21,6 +23,8 @@ namespace Protea {
         void OnUpdate();
 
         void OnEvent(Event &event);
+
+        ImGuiKey ConvertGLFWKeyToImGuiKey(int glfwKey);
 
     private:
         bool OnMouseButtonPressedEvent(MouseButtonPressedEvent& e);

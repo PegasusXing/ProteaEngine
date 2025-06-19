@@ -11,9 +11,13 @@
     #error Protea Engine only supports Windows...
 #endif
 
+#ifdef PROTEA_DEBUG
+#define PROTEA_ENABLE_ASSERTS
+#endif
+
 #ifdef PROTEA_ENABLE_ASSERTS
-#define PROTEA_ASSERT(x, ...) { if(!(x)) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#define PROTEA_CORE_ASSERT(x, ...) { if(!(x)) { HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#define PROTEA_ASSERT(x, ...) { if(!(x)) { PROTEA_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#define PROTEA_CORE_ASSERT(x, ...) { if(!(x)) { PROTEA_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
 #define PROTEA_ASSERT(x, ...)
 #define PROTEA_CORE_ASSERT(x, ...)
