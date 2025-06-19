@@ -1,10 +1,15 @@
 cmake_minimum_required(VERSION 3.31)
 project(ProteaEngine LANGUAGES CXX)
 
+# Set configuration types (only applies to multi-config generators)
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Dist" CACHE STRING "" FORCE)
 
-# Determine the C++ standard based on compiler
-# FIXME: GNU Compiler wont compile unless CXX_STANDARD is 17 or lower -  Conflict with EventFormatter.h
+# Set default build type for single-config generators
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the type of build." FORCE)
+endif()
+
+# Determine C++ standard based on compiler
 function(set_default_cxx_standard)
     if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         set(DEFAULT_CXX_STANDARD 17 PARENT_SCOPE)
@@ -19,34 +24,49 @@ endfunction()
 
 set_default_cxx_standard()
 
-# Apply C++ standard globally
 set(CMAKE_CXX_STANDARD ${DEFAULT_CXX_STANDARD})
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Check if the generator platform is set and valid
+# Check for 64-bit architecture
 if (CMAKE_GENERATOR_PLATFORM)
     if (NOT CMAKE_GENERATOR_PLATFORM STREQUAL "x64")
         message(FATAL_ERROR "Unsupported platform: ${CMAKE_GENERATOR_PLATFORM}. Only x64 is supported.")
     endif()
 endif()
 
-# Check pointer size at compile time (applies to non-MSVC too)
 if (CMAKE_SIZEOF_VOID_P LESS 8)
     message(FATAL_ERROR "Only 64-bit builds are supported. Please ensure you're targeting x64.")
 endif()
 
-# Hardcode architecture internally
+# Architecture definition
 set(PROTEA_ARCH "x64")
 
-# Output directory configuration per config (Debug/Release/etc.)
-foreach(CONFIG_TYPE DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
+# Output directories per config
+foreach(CONFIG_TYPE Debug Release Dist)
     string(TOUPPER ${CONFIG_TYPE} CONFIG_UPPER)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/bin)
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/lib)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_${CONFIG_UPPER} ${CMAKE_BINARY_DIR}/${CONFIG_TYPE}_${PROTEA_ARCH}/lib)
 endforeach()
 
-# Add project subdirectories
+# Custom flags per compiler and config
+function(configure_compiler_flags target)
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        target_compile_options(${target} PRIVATE
+                $<$<CONFIG:Debug>:-g -O0 -DDEBUG>
+                $<$<CONFIG:Release>:-O2 -DNDEBUG>
+                $<$<CONFIG:Dist>:-O3 -DNDEBUG -DPROTEA_DIST>
+        )
+    elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+        target_compile_options(${target} PRIVATE
+                $<$<CONFIG:Debug>:/Zi /Od /DDEBUG>
+                $<$<CONFIG:Release>:/O2 /DNDEBUG>
+                $<$<CONFIG:Dist>:/O2 /DNDEBUG /DPROTEA_DIST>
+        )
+    endif()
+endfunction()
+
+# Add subprojects
 add_subdirectory(ProteaCore)
 add_subdirectory(ProteaSandbox)
