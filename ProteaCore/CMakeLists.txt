@@ -16,6 +16,7 @@ set(PROTEA_CORE_SOURCES
         ### Platform ###################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsInput.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLContext.cpp
         ### ImGUI ######################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiBuild.cpp
@@ -44,8 +45,11 @@ set(PROTEA_CORE_HEADERS
         ### Platform ###################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.h
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsInput.h
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLContext.h
         ### ImGUI ######################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.h
+        ### Renderer ###################################################################################################
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/GraphicsContext.h
 )
 
 # Changed from SHARED to STATIC
@@ -54,8 +58,7 @@ add_library(ProteaCore STATIC ${PROTEA_CORE_SOURCES} ${PROTEA_CORE_HEADERS})
 target_include_directories(ProteaCore PUBLIC ${PROTEA_CORE_SOURCE_DIR})
 
 # Libraries are now linked PUBLIC so they're available to consumers of ProteaCore
-target_link_libraries(ProteaCore PUBLIC
-        opengl32 glad glfw imgui glm stb_img spdlog::spdlog
+target_link_libraries(ProteaCore PUBLIC opengl32 glad glfw imgui glm stb_img spdlog::spdlog
 )
 
 # Static library - no DLL definitions needed

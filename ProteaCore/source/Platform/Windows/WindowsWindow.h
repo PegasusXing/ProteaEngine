@@ -3,6 +3,8 @@
 
 #include "Protea/Window.h"
 
+#include "Protea/Renderer/GraphicsContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Protea {
@@ -30,6 +32,7 @@ namespace Protea {
         virtual void Shutdown();
 
         GLFWwindow *m_Window{};
+        GraphicsContext* m_Context;
 
         struct WindowData {
             std::string Title;
