@@ -111,24 +111,25 @@ if (NOT imgui_POPULATED)
     FetchContent_MakeAvailable(imgui)
     file(REMOVE_RECURSE "${imgui_SOURCE_DIR}/.git")
 
-    # Add imgui manually as a library
+endif ()
+
+# Now create imgui target if it doesn't exist yet
+if (NOT TARGET imgui)
     add_library(imgui
             ${imgui_SOURCE_DIR}/imgui.cpp
             ${imgui_SOURCE_DIR}/imgui_demo.cpp
             ${imgui_SOURCE_DIR}/imgui_draw.cpp
             ${imgui_SOURCE_DIR}/imgui_tables.cpp
             ${imgui_SOURCE_DIR}/imgui_widgets.cpp
-    )
-
-    target_include_directories(imgui PUBLIC ${imgui_SOURCE_DIR})
-
-    target_sources(imgui PRIVATE
             ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
             ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
     )
+
     target_include_directories(imgui PUBLIC
+            ${imgui_SOURCE_DIR}
             ${imgui_SOURCE_DIR}/backends
     )
+
     target_link_libraries(imgui PUBLIC glfw glad)
 
-endif ()
+endif()

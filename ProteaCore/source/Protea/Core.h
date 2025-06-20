@@ -2,11 +2,16 @@
 #define CORE_H
 
 #ifdef PROTEA_PLATFORM_WINDOWS
+#if PROTEA_DYNAMIC_LINK
 #ifdef PROTEA_BUILD_DLL
 #define PROTEA_API __declspec(dllexport)
 #else
 #define PROTEA_API __declspec(dllimport)
 #endif
+#else
+#define PROTEA_API
+#endif
+
 #else
     #error Protea Engine only supports Windows...
 #endif

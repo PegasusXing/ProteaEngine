@@ -7,7 +7,6 @@
 #include "Protea/Events/KeyEvent.h"
 #include "Protea/Events/MouseEvent.h"
 
-#include "imgui.h"
 
 namespace Protea {
     class PROTEA_API ImGuiLayer : public Layer {
@@ -23,12 +22,8 @@ namespace Protea {
         void Begin();
         void End();
 
-        //void SetEventBlocking(bool enabled) { m_BlockEvents = enabled; }
-        //bool IsEventBlockingEnabled() const { return m_BlockEvents; }
-
     private:
 
-        //bool m_BlockEvents = true;
         float m_Time = 0.0f;
     };
 }

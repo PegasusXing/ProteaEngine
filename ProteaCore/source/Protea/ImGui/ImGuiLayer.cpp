@@ -1,12 +1,13 @@
 #include "ProteaPCH.h"
 #include "ImGuiLayer.h"
-#include "Protea/Application.h"
 
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 
-#include "GLFW/glfw3.h"
+#include "Protea/Application.h"
+// TEMP
+#include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
 namespace Protea {
@@ -20,7 +21,6 @@ namespace Protea {
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
         ImGuiIO &io = ImGui::GetIO();
-        (void) io;
 
         /// Config flags ////////////////////////////////////////////////////////////////////
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
@@ -55,6 +55,7 @@ namespace Protea {
     }
 
     void ImGuiLayer::Begin() {
+
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
@@ -79,9 +80,9 @@ namespace Protea {
     }
 
     void ImGuiLayer::OnImGuiRender() {
-#ifdef PROTEA_DEBUG
         static bool show = true;
         ImGui::ShowDemoWindow(&show);
-#endif
+
+
     }
 }

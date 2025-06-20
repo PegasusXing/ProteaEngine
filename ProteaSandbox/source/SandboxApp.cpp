@@ -1,5 +1,8 @@
 #include "Protea.h"
 
+// TODO: Move to ImGuiLayer.h - Same inheritance
+#include "imgui.h"
+
 class ExampleLayer : public Protea::Layer {
 public:
     ExampleLayer() : Layer("ExampleLayer") {
@@ -11,10 +14,15 @@ public:
         }
     }
 
+    virtual void OnImGuiRender() override {
+        ImGui::Begin("Test");
+        ImGui::Text("Hello World");
+        ImGui::End();
+    }
+
     void OnEvent(Protea::Event &event) override {
         if (event.GetEventType() == Protea::EventType::KeyPressed) {
-            auto &e = (Protea::KeyPressedEvent &) event;
-
+            const auto &e = dynamic_cast<Protea::KeyPressedEvent &>(event);
 
             if (e.GetKeyCode() == PROTEA_KEY_TAB) {
                 PROTEA_TRACE("Tab key is pressed (event)!");
