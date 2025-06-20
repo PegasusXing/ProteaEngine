@@ -8,12 +8,15 @@
 #include "Events/ApplicationEvent.h"
 #include "Protea/ImGui/ImGuiLayer.h"
 
+#include "Protea/Renderer/Shader.h"
+#include "Protea/Renderer/Buffer.h"
+
 namespace Protea {
     class PROTEA_API Application {
     public:
         Application();
 
-        virtual ~Application();
+        virtual ~Application() = default;
 
         void Run();
 
@@ -34,6 +37,10 @@ namespace Protea {
         bool m_Running = true;
         LayerStack m_LayerStack;
 
+        unsigned int m_VertexArray;
+        std::unique_ptr<Shader> m_Shader;
+        std::unique_ptr<VertexBuffer> m_VertexBuffer;
+        std::unique_ptr<IndexBuffer> m_IndexBuffer;
         static Application* s_Instance;
     };
 

@@ -20,6 +20,14 @@ set(PROTEA_CORE_SOURCES
         ### ImGUI ######################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiBuild.cpp
+        ### Renderer ###################################################################################################
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Shader.cpp
+        source/Protea/Renderer/Buffer.cpp
+        source/Protea/Renderer/Buffer.h
+        source/Protea/Renderer/Renderer.cpp
+        source/Protea/Renderer/Renderer.h
+        source/Platform/OpenGL/OpenGLBuffer.cpp
+        source/Platform/OpenGL/OpenGLBuffer.h
 )
 
 set(PROTEA_CORE_HEADERS
@@ -50,6 +58,13 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.h
         ### Renderer ###################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/GraphicsContext.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Shader.h
+        source/Protea/Renderer/Buffer.cpp
+        source/Protea/Renderer/Buffer.h
+        source/Protea/Renderer/Renderer.cpp
+        source/Protea/Renderer/Renderer.h
+        source/Platform/OpenGL/OpenGLBuffer.cpp
+        source/Platform/OpenGL/OpenGLBuffer.h
 )
 
 # Changed from SHARED to STATIC
