@@ -28,6 +28,10 @@ set(PROTEA_CORE_SOURCES
         source/Protea/Renderer/Renderer.h
         source/Platform/OpenGL/OpenGLBuffer.cpp
         source/Platform/OpenGL/OpenGLBuffer.h
+        source/Protea/Renderer/VertexArray.cpp
+        source/Protea/Renderer/VertexArray.h
+        source/Platform/OpenGL/OpenGLVertexArray.cpp
+        source/Platform/OpenGL/OpenGLVertexArray.h
 )
 
 set(PROTEA_CORE_HEADERS
@@ -65,6 +69,10 @@ set(PROTEA_CORE_HEADERS
         source/Protea/Renderer/Renderer.h
         source/Platform/OpenGL/OpenGLBuffer.cpp
         source/Platform/OpenGL/OpenGLBuffer.h
+        source/Protea/Renderer/VertexArray.cpp
+        source/Protea/Renderer/VertexArray.h
+        source/Platform/OpenGL/OpenGLVertexArray.cpp
+        source/Platform/OpenGL/OpenGLVertexArray.h
 )
 
 # Changed from SHARED to STATIC
