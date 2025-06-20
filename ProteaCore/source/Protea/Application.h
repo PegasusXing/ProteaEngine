@@ -12,6 +12,8 @@
 #include "Protea/Renderer/Buffer.h"
 #include "Protea/Renderer/VertexArray.h"
 
+#include "Protea/Renderer/OrthographicCamera.h"
+
 namespace Protea {
     class PROTEA_API Application {
     public:
@@ -42,6 +44,8 @@ namespace Protea {
         std::shared_ptr<VertexArray> m_VertexArray;
         std::shared_ptr<Shader> m_BlueShader;
         std::shared_ptr<VertexArray> m_SquareVA;
+
+        OrthographicCamera m_Camera;
 
         static Application* s_Instance;
     };
