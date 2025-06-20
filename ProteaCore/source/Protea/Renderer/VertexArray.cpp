@@ -10,8 +10,8 @@ namespace Protea {
     {
         switch (Renderer::GetAPI())
         {
-            case RendererAPI::None:    PROTEA_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-            case RendererAPI::OpenGL:  return new OpenGLVertexArray();
+            case RendererAPI::API::None:    PROTEA_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+            case RendererAPI::API::OpenGL:  return new OpenGLVertexArray();
         }
 
         PROTEA_CORE_ASSERT(false, "Unknown RendererAPI!");
