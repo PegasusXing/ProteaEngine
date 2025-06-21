@@ -35,6 +35,7 @@
 #include "Protea/Renderer/RenderCommand.h"
 #include "Protea/Renderer/Buffer.h"
 #include "Protea/Renderer/Shader.h"
+#include "Protea/Renderer/Texture.h"
 #include "Protea/Renderer/VertexArray.h"
 #include "Protea/Renderer/OrthographicCamera.h"
 

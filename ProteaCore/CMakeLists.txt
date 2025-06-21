@@ -32,6 +32,7 @@ set(PROTEA_CORE_SOURCES
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RenderCommand.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RendererAPI.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/OrthographicCamera.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Texture.cpp
 )
 
 set(PROTEA_CORE_HEADERS
@@ -75,6 +76,9 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RendererAPI.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RenderCommand.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/OrthographicCamera.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Texture.h
+        source/Platform/OpenGL/OpenGLTexture.cpp
+        source/Platform/OpenGL/OpenGLTexture.h
 )
 
 # Changed from SHARED to STATIC

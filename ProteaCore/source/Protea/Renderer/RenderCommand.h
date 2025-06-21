@@ -8,28 +8,26 @@
 #include "RendererAPI.h"
 
 namespace Protea {
-
-    class RenderCommand
-    {
+    class RenderCommand {
     public:
-        inline static void SetClearColor(const glm::vec4& color)
-        {
+        inline static void Init() {
+            s_RendererAPI->Init();
+        }
+        inline static void SetClearColor(const glm::vec4 &color) {
             s_RendererAPI->SetClearColor(color);
         }
 
-        inline static void Clear()
-        {
+        inline static void Clear() {
             s_RendererAPI->Clear();
         }
 
-        inline static void DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
-        {
+        inline static void DrawIndexed(const std::shared_ptr<VertexArray> &vertexArray) {
             s_RendererAPI->DrawIndexed(vertexArray);
         }
-    private:
-        static RendererAPI* s_RendererAPI;
-    };
 
+    private:
+        static RendererAPI *s_RendererAPI;
+    };
 }
 
 
