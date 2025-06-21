@@ -7,6 +7,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include <filesystem>
+
 class ExampleLayer : public Protea::Layer
 {
 public:
@@ -125,8 +127,11 @@ public:
 			}
 		)";
 
+		std::cout << "Current working directory: " << std::filesystem::current_path() << std::endl;
+
 		m_FlatColorShader.reset(Protea::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 
+		// TODO: FIX FILEPATHS IN CMAKE PROJECT CONFIG -> THIS SHIT IS NASTY
 		m_TextureShader.reset(Protea::Shader::Create("C:/ProteaEngine/ProteaSandbox/assets/shaders/Texture.glsl"));
 
 		m_Texture = Protea::Texture2D::Create("C:/ProteaEngine/ProteaSandbox/assets/textures/Checkerboard.png");
