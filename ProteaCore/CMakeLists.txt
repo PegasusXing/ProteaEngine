@@ -17,29 +17,20 @@ set(PROTEA_CORE_SOURCES
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsInput.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLContext.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLVertexArray.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLBuffer.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLRendererAPI.cpp
         ### ImGUI ######################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiBuild.cpp
         ### Renderer ###################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Shader.cpp
-        source/Protea/Renderer/Buffer.cpp
-        source/Protea/Renderer/Buffer.h
-        source/Protea/Renderer/Renderer.cpp
-        source/Protea/Renderer/Renderer.h
-        source/Platform/OpenGL/OpenGLBuffer.cpp
-        source/Platform/OpenGL/OpenGLBuffer.h
-        source/Protea/Renderer/VertexArray.cpp
-        source/Protea/Renderer/VertexArray.h
-        source/Platform/OpenGL/OpenGLVertexArray.cpp
-        source/Platform/OpenGL/OpenGLVertexArray.h
-        source/Protea/Renderer/RenderCommand.cpp
-        source/Protea/Renderer/RenderCommand.h
-        source/Protea/Renderer/RendererAPI.cpp
-        source/Protea/Renderer/RendererAPI.h
-        source/Platform/OpenGL/OpenGLRendererAPI.cpp
-        source/Platform/OpenGL/OpenGLRendererAPI.h
-        source/Protea/Renderer/OrthographicCamera.cpp
-        source/Protea/Renderer/OrthographicCamera.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/VertexArray.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Buffer.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Renderer.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RenderCommand.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RendererAPI.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/OrthographicCamera.cpp
 )
 
 set(PROTEA_CORE_HEADERS
@@ -53,6 +44,15 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Window.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Layer.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/LayerStack.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Core/Timestep.h
+        ### Platform ###################################################################################################
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.h
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsInput.h
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLContext.h
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLBuffer.h
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLVertexArray.h
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLRendererAPI.h
+        ### Input ######################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Input.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/KeyCodes.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/MouseButtonCodes.h
@@ -62,34 +62,18 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/MouseEvent.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/ApplicationEvent.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Events/EventFormatter.h
-        ### Platform ###################################################################################################
-        ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsWindow.h
-        ${PROTEA_CORE_SOURCE_DIR}/Platform/Windows/WindowsInput.h
-        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLContext.h
         ### ImGUI ######################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.h
         ### Renderer ###################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/GraphicsContext.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Shader.h
-        source/Protea/Renderer/Buffer.cpp
-        source/Protea/Renderer/Buffer.h
-        source/Protea/Renderer/Renderer.cpp
-        source/Protea/Renderer/Renderer.h
-        source/Platform/OpenGL/OpenGLBuffer.cpp
-        source/Platform/OpenGL/OpenGLBuffer.h
-        source/Protea/Renderer/VertexArray.cpp
-        source/Protea/Renderer/VertexArray.h
-        source/Platform/OpenGL/OpenGLVertexArray.cpp
-        source/Platform/OpenGL/OpenGLVertexArray.h
-        source/Protea/Renderer/RenderCommand.cpp
-        source/Protea/Renderer/RenderCommand.h
-        source/Protea/Renderer/RendererAPI.cpp
-        source/Protea/Renderer/RendererAPI.h
-        source/Platform/OpenGL/OpenGLRendererAPI.cpp
-        source/Platform/OpenGL/OpenGLRendererAPI.h
-        source/Protea/Renderer/OrthographicCamera.cpp
-        source/Protea/Renderer/OrthographicCamera.h
-        source/Protea/Core/Timestep.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Buffer.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Renderer.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/VertexArray.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RendererAPI.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RenderCommand.h
+        ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/OrthographicCamera.h
+
 )
 
 # Changed from SHARED to STATIC
