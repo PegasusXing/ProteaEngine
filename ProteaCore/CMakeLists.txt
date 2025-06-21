@@ -73,6 +73,8 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RendererAPI.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RenderCommand.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/OrthographicCamera.h
+        source/Platform/OpenGL/OpenGLShader.cpp
+        source/Platform/OpenGL/OpenGLShader.h
 
 )
 
