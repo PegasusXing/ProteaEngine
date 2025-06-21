@@ -2,6 +2,7 @@
 #define LAYER_H
 
 #include "Protea/Core.h"
+#include "Protea/Core/Timestep.h"
 #include "Protea/Events/Event.h"
 
 
@@ -18,8 +19,7 @@ namespace Protea {
         virtual void OnDetach() {
         }
 
-        virtual void OnUpdate() {
-        }
+        virtual void OnUpdate(Timestep ts) {}
 
         virtual void OnImGuiRender() {
         }

@@ -6,16 +6,12 @@
 #include "Protea/LayerStack.h"
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
+
+#include "Protea/Core/Timestep.h"
 #include "Protea/ImGui/ImGuiLayer.h"
 
-#include "Protea/Renderer/Shader.h"
-#include "Protea/Renderer/Buffer.h"
-#include "Protea/Renderer/VertexArray.h"
-
-#include "Protea/Renderer/OrthographicCamera.h"
-
 namespace Protea {
-    class PROTEA_API Application {
+    class Application {
     public:
         Application();
 
@@ -40,12 +36,7 @@ namespace Protea {
         bool m_Running = true;
         LayerStack m_LayerStack;
 
-        std::shared_ptr<Shader> m_Shader;
-        std::shared_ptr<VertexArray> m_VertexArray;
-        std::shared_ptr<Shader> m_BlueShader;
-        std::shared_ptr<VertexArray> m_SquareVA;
-
-        OrthographicCamera m_Camera;
+        float m_LastFrameTime = 0.0f;
 
         static Application* s_Instance;
     };

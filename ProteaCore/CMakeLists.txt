@@ -89,6 +89,7 @@ set(PROTEA_CORE_HEADERS
         source/Platform/OpenGL/OpenGLRendererAPI.h
         source/Protea/Renderer/OrthographicCamera.cpp
         source/Protea/Renderer/OrthographicCamera.h
+        source/Protea/Core/Timestep.h
 )
 
 # Changed from SHARED to STATIC
