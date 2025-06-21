@@ -21,6 +21,7 @@ set(PROTEA_CORE_SOURCES
         ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLBuffer.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLRendererAPI.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLShader.cpp
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLTexture.cpp
         ### ImGUI ######################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiLayer.cpp
         ${PROTEA_CORE_SOURCE_DIR}/Protea/ImGui/ImGuiBuild.cpp
@@ -55,6 +56,7 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLVertexArray.h
         ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLRendererAPI.h
         ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLShader.h
+        ${PROTEA_CORE_SOURCE_DIR}/Platform/OpenGL/OpenGLTexture.h
         ### Input ######################################################################################################
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Input.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/KeyCodes.h
@@ -77,8 +79,6 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RenderCommand.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/OrthographicCamera.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Texture.h
-        source/Platform/OpenGL/OpenGLTexture.cpp
-        source/Platform/OpenGL/OpenGLTexture.h
 )
 
 # Changed from SHARED to STATIC

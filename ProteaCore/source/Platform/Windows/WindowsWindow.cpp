@@ -147,6 +147,7 @@ namespace Protea {
         glfwDestroyWindow(m_Window);
     }
 
+    // TODO: Move to Texture loading class instead
     void WindowsWindow::SetWindowIconFromFile(GLFWwindow *window, const std::vector<std::string>& filepaths) {
         std::vector<GLFWimage> icons;
         std::vector<unsigned char*> allocatedImages; // Keep track to free later
