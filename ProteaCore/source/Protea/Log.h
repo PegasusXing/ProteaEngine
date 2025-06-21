@@ -29,20 +29,20 @@ namespace Protea {
 ////////////////////////////////////////////////////////
 /// CORE LOG MACROS: ///////////////////////////////////
 ////////////////////////////////////////////////////////
-#define PROTEA_CORE_TRACE(...)      ::Protea::Log::GetCoreLogger()->trace(__VA_ARGS__)
-#define PROTEA_CORE_DEBUG(...)      ::Protea::Log::GetCoreLogger()->debug(__VA_ARGS__)
-#define PROTEA_CORE_INFO(...)       ::Protea::Log::GetCoreLogger()->info(__VA_ARGS__)
-#define PROTEA_CORE_WARN(...)       ::Protea::Log::GetCoreLogger()->warn(__VA_ARGS__)
-#define PROTEA_CORE_ERROR(...)      ::Protea::Log::GetCoreLogger()->error(__VA_ARGS__)
-#define PROTEA_CORE_CRITICAL(...)   ::Protea::Log::GetCoreLogger()->critical(__VA_ARGS__)
+#define PROTEA_CORE_TRACE(...)      SPDLOG_LOGGER_TRACE(::Protea::Log::GetCoreLogger(), __VA_ARGS__)
+#define PROTEA_CORE_DEBUG(...)      SPDLOG_LOGGER_DEBUG(::Protea::Log::GetCoreLogger(), __VA_ARGS__)
+#define PROTEA_CORE_INFO(...)       SPDLOG_LOGGER_INFO(::Protea::Log::GetCoreLogger(), __VA_ARGS__)
+#define PROTEA_CORE_WARN(...)       SPDLOG_LOGGER_WARN(::Protea::Log::GetCoreLogger(), __VA_ARGS__)
+#define PROTEA_CORE_ERROR(...)      SPDLOG_LOGGER_ERROR(::Protea::Log::GetCoreLogger(), __VA_ARGS__)
+#define PROTEA_CORE_CRITICAL(...)   SPDLOG_LOGGER_CRITICAL(::Protea::Log::GetCoreLogger(), __VA_ARGS__)
 ////////////////////////////////////////////////////////
 /// CLIENT LOG MACROS: /////////////////////////////////
 ////////////////////////////////////////////////////////
-#define PROTEA_TRACE(...)           ::Protea::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define PROTEA_DEBUG(...)           ::Protea::Log::GetClientLogger()->debug(__VA_ARGS__)
-#define PROTEA_INFO(...)            ::Protea::Log::GetClientLogger()->info(__VA_ARGS__)
-#define PROTEA_WARN(...)            ::Protea::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define PROTEA_ERROR(...)           ::Protea::Log::GetClientLogger()->error(__VA_ARGS__)
-#define PROTEA_CRITICAL(...)        ::Protea::Log::GetClientLogger()->critical(__VA_ARGS__)
+#define PROTEA_TRACE(...)           SPDLOG_LOGGER_TRACE(::Protea::Log::GetClientLogger(), __VA_ARGS__)
+#define PROTEA_DEBUG(...)           SPDLOG_LOGGER_DEBUG(::Protea::Log::GetClientLogger(), __VA_ARGS__)
+#define PROTEA_INFO(...)            SPDLOG_LOGGER_INFO(::Protea::Log::GetClientLogger(), __VA_ARGS__)
+#define PROTEA_WARN(...)            SPDLOG_LOGGER_WARN(::Protea::Log::GetClientLogger(), __VA_ARGS__)
+#define PROTEA_ERROR(...)           SPDLOG_LOGGER_ERROR(::Protea::Log::GetClientLogger(), __VA_ARGS__)
+#define PROTEA_CRITICAL(...)        SPDLOG_LOGGER_CRITICAL(::Protea::Log::GetClientLogger(), __VA_ARGS__)
 
 #endif //LOG_H
