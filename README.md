@@ -2,6 +2,8 @@
 
 ![ProteaEngine](/Resources/Documentation/Protea_Engine_Logo_2160.png?raw=true "ProteaEngine")
 
+***NOTE: THIS IS VERY MUCH A WORK IN PROGRESS***
+
 ProteaEngine is an early-stage rendering engine for Windows, built as a learning tool for game engine development.
 Currently not much is implemented, however this entire project serves as a hands-on educational experience to understand
 the fundamentals of engine architecture, graphics programming, and system design.
