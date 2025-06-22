@@ -127,8 +127,6 @@ public:
 			}
 		)";
 
-		std::cout << "Current working directory: " << std::filesystem::current_path() << std::endl;
-
 		m_FlatColorShader.reset(Protea::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 
 		// TODO: FIX FILEPATHS IN CMAKE PROJECT CONFIG -> THIS SHIT IS NASTY
