@@ -9,3 +9,5 @@ the fundamentals of engine architecture, graphics programming, and system design
 This project draws inspiration from TheCherno's engine development series found at thecherno.com/engine, adapted and
 expanded upon as part of my personal development journey in understanding how modern game engines work from the ground
 up.
+
+## Getting Started
