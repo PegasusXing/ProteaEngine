@@ -12,7 +12,7 @@ up.
 
 ## Getting Started
 
-ProteaEngine has not been tested on many development environments - Currently the only supported build is Windows.
+ProteaEngine has not been tested on many development environments - Currently the only supported build is for Windows.
 
 ### Prerequisites
 
