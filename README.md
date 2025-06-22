@@ -18,9 +18,19 @@ up.
 - C++ Compiler (Clang or MSVC recommended)
 - Git
 
+## Building ProteaEngine
+
 ### Clone the repository:
 
 ```
 git clone https://github.com/PegasusXing/ProteaEngine.git
 cd ProteaEngine
 ```
+
+### Build using the build script:
+
+```
+.\build.bat
+```
+
+
