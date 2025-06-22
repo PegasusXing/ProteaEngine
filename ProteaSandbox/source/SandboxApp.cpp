@@ -94,7 +94,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Protea::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Protea::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -127,17 +127,16 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Protea::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+		m_FlatColorShader = Protea::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
 		// TODO: FIX FILEPATHS IN CMAKE PROJECT CONFIG -> THIS SHIT IS NASTY
-		m_TextureShader.reset(Protea::Shader::Create("C:/ProteaEngine/ProteaSandbox/assets/shaders/Texture.glsl"));
+		auto textureShader = m_ShaderLibrary.Load("C:/ProteaEngine/ProteaSandbox/assets/shaders/Texture.glsl");
 
 		m_Texture = Protea::Texture2D::Create("C:/ProteaEngine/ProteaSandbox/assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = Protea::Texture2D::Create("C:/ProteaEngine/ProteaSandbox/assets/textures/ChernoLogo.png");
 
-		std::dynamic_pointer_cast<Protea::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Protea::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
-	}
+		std::dynamic_pointer_cast<Protea::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Protea::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);	}
 
 	void OnUpdate(Protea::Timestep ts) override
 	{
@@ -176,10 +175,12 @@ public:
 				Protea::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 		}
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Protea::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Protea::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_ChernoLogoTexture->Bind();
-		Protea::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Protea::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// Hello Triangle...
 		// Protea::Renderer::Submit(m_Shader, m_VertexArray);
@@ -198,10 +199,11 @@ public:
 	{
 	}
 private:
+	Protea::ShaderLibrary m_ShaderLibrary;
 	Protea::Ref<Protea::Shader> m_Shader;
 	Protea::Ref<Protea::VertexArray> m_VertexArray;
 
-	Protea::Ref<Protea::Shader> m_FlatColorShader, m_TextureShader;
+	Protea::Ref<Protea::Shader> m_FlatColorShader;
 	Protea::Ref<Protea::VertexArray> m_SquareVA;
 
 	Protea::Ref<Protea::Texture2D> m_Texture, m_ChernoLogoTexture;
