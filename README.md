@@ -19,3 +19,6 @@ up.
 - Git
 
 ### Clone the repository:
+
+`git clone https://github.com/PegasusXing/ProteaEngine.git`
+
