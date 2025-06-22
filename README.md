@@ -33,4 +33,32 @@ cd ProteaEngine
 .\build.bat
 ```
 
+The script will prompt you to choose your compiler toolchain. The build system uses Ninja as the default generator,
+though Make has also been tested and works.
 
+***NOTE:*** GCC build currently fails due to C++20 being used. A solution is in the works.
+
+## Development Environment Setup
+
+### CLion:
+
+- Open the cloned project in CLion
+- The CMake configuration should be detected automatically
+- Tested and working with both Clang and MSVC toolchains
+- GCC is currently unstable and not recommended
+
+### Visual Studio 2019/2022:
+
+- Open cloned project in Visual Studio
+- All CMake targets should be loaded correctly
+- The engine builds and runs successfully
+
+## Known Issues
+
+- Some filepath issues regarding image sources are currently being resolved
+- GCC toolchain support is currently unstable
+
+## Next Steps
+
+Once built successfully, you can run the application and begin exploring the engine architecture. Check the project
+structure and existing code to understand the current implementation status.
