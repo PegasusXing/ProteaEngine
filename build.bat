@@ -23,7 +23,7 @@ cls
 echo -----------------------------------------------------------------------------
 echo ------------------------  %COLOR_GREEN%ProteaEngine Build System%COLOR_RESET%  ------------------------
 echo -----------------------------------------------------------------------------
-echo ------- %COLOR_YELLOW%NOTE: GCC MAY FAIL IF PROJECT REQUIRES C++20+%COLOR_RESET% -------
+echo --------------- %COLOR_YELLOW%NOTE: GCC MAY FAIL IF PROJECT REQUIRES C++20+%COLOR_RESET% ---------------
 echo -----------------------------------------------------------------------------
 echo 1. %COLOR_GREEN%Clang%COLOR_RESET%   (with Ninja)
 echo 2. %COLOR_GREEN%GCC%COLOR_RESET%     (with Ninja)
