@@ -11,3 +11,11 @@ expanded upon as part of my personal development journey in understanding how mo
 up.
 
 ## Getting Started
+
+### Prerequisites
+
+- CMake
+- C++ Compiler (Clang or MSVC recommended)
+- Git
+
+### Clone the repository:
