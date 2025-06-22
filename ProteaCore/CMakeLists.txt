@@ -79,6 +79,8 @@ set(PROTEA_CORE_HEADERS
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/RenderCommand.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/OrthographicCamera.h
         ${PROTEA_CORE_SOURCE_DIR}/Protea/Renderer/Texture.h
+        source/Protea/OrthographicCameraController.cpp
+        source/Protea/OrthographicCameraController.h
 )
 
 # Changed from SHARED to STATIC
